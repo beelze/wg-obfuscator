@@ -15,6 +15,26 @@ jobs:
             toolchain: mips-unknown-linux-muslsf
             flags: "-march=mips32 -msoft-float"
 
+          - name: mips32-hardfloat
+            toolchain: mips-unknown-linux-musl
+            flags: "-march=mips32 -mhard-float"
+
+          - name: mips32el-softfloat
+            toolchain: mipsel-unknown-linux-muslsf
+            flags: "-march=mips32 -msoft-float -EL"
+
+          - name: mips32el-hardfloat
+            toolchain: mipsel-unknown-linux-musl
+            flags: "-march=mips32 -mhard-float -EL"
+
+          - name: mips64
+            toolchain: mips64-unknown-linux-musl
+            flags: "-march=mips64"
+
+          - name: mips64el
+            toolchain: mips64el-unknown-linux-musl
+            flags: "-march=mips64 -EL"
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
