@@ -13,7 +13,7 @@ jobs:
         target:
           - name: mips32-softfloat
             toolchain: mips-unknown-linux-muslsf
-            flags: "-march=mips32 -msoft-float -static"
+            flags: "-march=mips32 -msoft-float"
 
     steps:
       - name: Checkout code
@@ -34,11 +34,16 @@ jobs:
       - name: Build binary
         run: |
           CC=${{ matrix.target.toolchain }}-gcc
-          $CC -static -O2 -Wall ${{ matrix.target.flags }} -o wg-obfuscator-${{ matrix.target.name }} wg-obfuscator.c config.c
+          $CC -static -O2 -Wall -g0 ${{ matrix.target.flags }} -o wg-obfuscator-${{ matrix.target.name }} wg-obfuscator.c config.c
+
+      - name: Strip binary for minimal size
+        run: |
+          STRIP=${{ matrix.target.toolchain }}-strip
+          $STRIP --strip-all wg-obfuscator-${{ matrix.target.name }}
 
       - name: Verify binary (optional)
         run: |
-          file wg-obfuscator-${{ matrix.target.name }}  # Quick check for architecture and static linking
+          file wg-obfuscator-${{ matrix.target.name }}  # Should now show 'stripped' without debug_info
 
       - name: Upload binary artifact
         uses: actions/upload-artifact@v4
