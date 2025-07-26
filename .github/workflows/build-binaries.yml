@@ -12,7 +12,7 @@ jobs:
       matrix:
         target:
           - name: mips32sf
-            toolchain: mips-linux-muslsf-cross
+            toolchain: mips-linux-muslsf
             flags: "-mips32 -msoft-float -static"
           # - name: mips32-hardfloat
           #   toolchain: mips-linux-musl
