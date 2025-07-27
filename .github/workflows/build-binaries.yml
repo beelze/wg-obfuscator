@@ -35,6 +35,10 @@ jobs:
             toolchain: mips64el-unknown-linux-musl
             flags: "-march=mips64 -EL"
 
+          - name: arm64
+            toolchain: aarch64-unknown-linux-musl
+            flags: ""
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
