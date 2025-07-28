@@ -52,7 +52,7 @@ jobs:
             flags: ""
 
           - name: arm32v7-hardfloat
-            toolchain: arm7-unknown-linux-musleabihf
+            toolchain: armv7-unknown-linux-musleabihf
             flags: ""
 
     steps:
