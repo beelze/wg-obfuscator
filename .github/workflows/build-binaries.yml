@@ -39,6 +39,22 @@ jobs:
             toolchain: aarch64-unknown-linux-musl
             flags: ""
 
+          - name: arm32-softfloat
+            toolchain: arm-unknown-linux-musleabi
+            flags: ""
+
+          - name: arm32-hardfloat
+            toolchain: arm-unknown-linux-musleabihf
+            flags: ""
+
+          - name: arm32v7-softfloat
+            toolchain: armv7-unknown-linux-musleabi
+            flags: ""
+
+          - name: arm32v7-hardfloat
+            toolchain: arm7-unknown-linux-musleabihf
+            flags: ""
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
